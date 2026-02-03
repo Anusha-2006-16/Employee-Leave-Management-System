@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Managers-Approval List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+<div class="container mt-4">
+    <h1 class="mb-3">Managers-Approval List</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover bg-white text-center align-middle">
+            <thead class="table-dark">
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="request : ${requests}">
+                <td th:text="${request.employee.id}"></td>
+                <td th:text="${request.employee.name}"></td>
+                <td th:text="${request.startDate}"></td>
+                <td th:text="${request.endDate}"></td>
+                <td th:text="${request.reason}"></td>
+                <td th:text="${request.status}"></td>
+                <td>
+                    <a th:href="@{/manager/changeEmpAppr/{id}(id=${request.id})}" class="btn btn-sm btn-warning">
+                        Change Approval
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

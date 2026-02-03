@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Employee Request (Admin)</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-bold">Change Employee Leave Request</h3>
+    <a class="btn btn-secondary" th:href="@{/admin/dashboard}">
+      ← Back to Home
+    </a>
+  </div>
+
+  <!-- Card -->
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <div class="card shadow">
+        <div class="card-header bg-dark text-white text-center">
+          <h5 class="mb-0">Admin Approval Form</h5>
+        </div>
+
+        <div class="card-body">
+          <form th:object="${request}"
+                th:action="@{/admin/changeEmpAppr/{id}(id=${request.id})}"
+                method="post">
+
+            <!-- Status -->
+            <div class="mb-3">
+              <label for="status" class="form-label fw-semibold">Status</label>
+              <select id="status"
+                      class="form-select"
+                      th:field="*{status}">
+                <option value="APPROVED">Approve</option>
+                <option value="REJECTED">Reject</option>
+              </select>
+            </div>
+
+            <!-- Comment -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Manager Comment</label>
+              <textarea class="form-control"
+                        rows="4"
+                        th:field="*{managerComment}"
+                        placeholder="Add any comment"></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-success">
+                Submit Decision
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

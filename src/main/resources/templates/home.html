@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Leave Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+<div class="container text-center mt-5">
+    <!-- Title -->
+    <h1 class="display-4 mb-3">Welcome to Employee Leave Management System</h1>
+
+    <!-- Description -->
+    <p class="lead mb-4">
+        Easily manage your leave requests, track your leave history,
+        and streamline approval processes for employees and managers.
+    </p>
+
+    <!-- Buttons -->
+    <div class="d-flex justify-content-center gap-3 mb-5">
+        <a th:href="@{/register}" class="btn btn-primary btn-lg">Register</a>
+        <a th:href="@{/login}" class="btn btn-success btn-lg">Login</a>
+    </div>
+
+    <!-- Optional Footer Note -->
+    <p class="text-muted">Access your dashboard and manage leaves efficiently!</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

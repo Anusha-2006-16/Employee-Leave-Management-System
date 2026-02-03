@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Leave Requests</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+<div class="container mt-4">
+  <h1 class="mb-3">Leave Requests</h1>
+
+  <a class="btn btn-secondary mb-3" th:href="@{/admin/dashboard}">Back to Home Page</a>
+
+  <div class="mb-3">
+    <label class="form-label me-2"><b>Filter By Status:</b></label>
+    <div class="btn-group" role="group">
+      <a th:href="@{/admin/leaveRequests/APPROVED}" class="btn btn-primary">Approved</a>
+      <a th:href="@{/admin/leaveRequests/PENDING}" class="btn btn-secondary">Pending</a>
+      <a th:href="@{/admin/leaveRequests/REJECTED}" class="btn btn-warning">Rejected</a>
+    </div>
+    <a class="btn btn-dark ms-3" th:if="${statusFilter}" th:href="@{/admin/leaveRequests}">
+      Show All Leave-Requests
+    </a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover bg-white text-center align-middle">
+      <thead class="table-dark">
+      <tr>
+        <th>LeaveRequest ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th>Reason</th>
+        <th>Manager Comment</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="request : ${requests}">
+        <td th:text="${request.id}"></td>
+        <td th:text="${request.startDate}"></td>
+        <td th:text="${request.endDate}"></td>
+        <td th:text="${request.status}"></td>
+        <td th:text="${request.reason}"></td>
+        <td th:text="${request.managerComment}"></td>
+        <td>
+          <a th:href="@{/admin/changeEmpAppr/{id}(id=${request.id})}" class="btn btn-sm btn-warning">
+            Change Approval
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Analyze-Requests</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+<div class="container mt-4">
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">📊 Analyze Leave Requests</h2>
+    <a class="btn btn-outline-secondary" th:href="@{/admin/dashboard}">
+      ⬅ Back to Dashboard
+    </a>
+  </div>
+
+  <hr>
+
+  <!-- Total Requests -->
+  <div class="text-center mb-4">
+    <h3 class="fw-semibold">
+      TOTAL REQUESTS :
+      <span class="badge bg-dark fs-5" th:text="${totalLeaves}"></span>
+    </h3>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="row justify-content-center g-3">
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-warning">
+        <div class="card-body text-center">
+          <h5 class="card-title text-warning">Pending</h5>
+          <h2 class="fw-bold" th:text="${leavesPending}"></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-success">
+        <div class="card-body text-center">
+          <h5 class="card-title text-success">Approved</h5>
+          <h2 class="fw-bold" th:text="${leavesApproved}"></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-danger">
+        <div class="card-body text-center">
+          <h5 class="card-title text-danger">Rejected</h5>
+          <h2 class="fw-bold" th:text="${leavesRejected}"></h2>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
